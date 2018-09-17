@@ -1,0 +1,20 @@
+<!--
+  CLI for installing angular materials:
+  ng add @angular/material
+-->
+<!--
+   Angular materials connot work without installing each material module for them
+    EX: input field needs MatInputModule imported from angular materials then put in imports
+          Note: Input stuff needs a mat-form-module around it.
+ -->
+<mat-card>
+  <mat-form-field>
+    <!-- ngModel needs to be imported from the FormsModule from the app.module -->
+    <!-- ngModel "models" a something from the elements value -->
+    <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+  <!-- Angular.json contains the chosen material theme. In this case Indigo-pink -->
+  <button mat-raised-button
+          color="accent"
+          (click)="onAddPost()">Save Post</button>
+</mat-card>
