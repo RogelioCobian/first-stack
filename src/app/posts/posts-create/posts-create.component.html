@@ -8,16 +8,34 @@
           Note: Input stuff needs a mat-form-module around it.
  -->
 <mat-card>
-  <mat-form-field>
-    <input matInput type="text" [(ngModel)]="enteredTitle">
-  </mat-form-field>
-  <mat-form-field>
-    <!-- ngModel needs to be imported from the FormsModule from the app.module -->
-    <!-- ngModel "models" a something from the elements value -->
-    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
-  </mat-form-field>
-  <!-- Angular.json contains the chosen material theme. In this case Indigo-pink -->
-  <button mat-raised-button
-          color="accent"
-          (click)="onAddPost()">Save Post</button>
-</mat-card>
+  <!-- Angular forms accepts buttons of type submit and that can be an event -->
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        ngModel
+        required
+        minlength="3"
+        #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please enter a post title. (Three character min.)</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- ngModel needs to be imported from the FormsModule from the app.module -->
+      <!-- ngModel "models" a something from the elements value -->
+      <textarea
+        matInput
+        rows="4"
+        name="content"
+        ngModel
+        required
+        #content="ngModel"></textarea>
+        <mat-error *ngIf="content.invalid">Please enter a post content.</mat-error>
+    </mat-form-field>
+    <!-- Angular.json contains the chosen material theme. In this case Indigo-pink -->
+    <button mat-raised-button
+    color="accent"
+    type="submit">Save Post</button>
+  </form>
+  </mat-card>
