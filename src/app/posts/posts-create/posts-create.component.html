@@ -9,9 +9,12 @@
  -->
 <mat-card>
   <mat-form-field>
+    <input matInput type="text" [(ngModel)]="enteredTitle">
+  </mat-form-field>
+  <mat-form-field>
     <!-- ngModel needs to be imported from the FormsModule from the app.module -->
     <!-- ngModel "models" a something from the elements value -->
-    <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
   </mat-form-field>
   <!-- Angular.json contains the chosen material theme. In this case Indigo-pink -->
   <button mat-raised-button
